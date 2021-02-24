@@ -10,8 +10,6 @@ import java.util.List;
 @RestController
 public class PostController {
 
-    private static Integer PAGE_SIZE = 20;
-
     @Autowired
     PostRepository postRepository;
 
@@ -31,7 +29,8 @@ public class PostController {
 
     // 4. 글 내용으로 검색 -> 해당 내용이 포함된 모든 글
     @GetMapping("/search")
-    public List<Post> findByContentContains(@RequestParam String content) {
-        return postRepository.findByContentContains(content);
+    public List<Post> findPostsByContent(@RequestParam String content) {
+        return postRepository.findByContent(content);
     }
+
 }
